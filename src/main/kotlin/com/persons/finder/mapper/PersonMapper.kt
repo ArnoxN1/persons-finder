@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Mapper
 interface PersonMapper {
     fun selectById(id: Int): Person
     fun selectByIds(ids: Array<Int>): List<Person>
+    fun insert(person: Person): Int
 }

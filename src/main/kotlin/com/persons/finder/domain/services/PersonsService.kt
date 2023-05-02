@@ -4,6 +4,6 @@ import com.persons.finder.data.Person
 
 interface PersonsService {
     fun getById(id: Int): Person
-    fun save(person: Person)
+    fun save(person: Person): Int
     fun getByIds(ids: Array<Int>): List<Person>
 }

@@ -15,8 +15,8 @@ class PersonsServiceImpl : PersonsService {
         return personMapper!!.selectById(id);
     }
 
-    override fun save(person: Person) {
-        TODO("Not yet implemented")
+    override fun save(person: Person): Int {
+        return personMapper!!.insert(person);
     }
 
     override fun getByIds(ids: Array<Int>): List<Person> {

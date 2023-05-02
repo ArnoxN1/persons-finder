@@ -3,9 +3,8 @@ package com.persons.finder.presentation
 import com.persons.finder.data.Person
 import com.persons.finder.domain.services.PersonsService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import java.lang.NullPointerException
 
 @RestController
 @RequestMapping("api/v1/persons")
@@ -23,6 +22,11 @@ class PersonController @Autowired constructor() {
         TODO POST API to create a 'person'
         (JSON) Body and return the id of the created entity
     */
+    @PostMapping("/addPerson")
+    fun insertPerson(@RequestBody person: Person): R<Int> {
+        personsService!!.save(person);
+        return R.ok(person.id);
+    }
 
     /*
         TODO GET API to retrieve people around query location with a radius in KM, Use query param for radius.

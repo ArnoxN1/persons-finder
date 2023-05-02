@@ -15,4 +15,8 @@
         </foreach>
     </select>
 
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.persons.finder.data.Person">
+        insert into person(name) values (#{name})
+    </insert>
+
 </mapper>
