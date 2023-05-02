@@ -21,7 +21,3 @@ Steps:
 
 ### Extra challenge
 ### Add a million, 10 million and 100 million entries and challenge your API's efficiency 
-
-For any questions, please reach out on: leo@getsquareone.app
-
-
