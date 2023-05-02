@@ -1,5 +1,7 @@
 package com.persons.finder.presentation
 
+import com.persons.finder.data.Person
+import com.persons.finder.domain.services.PersonsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -8,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("api/v1/persons")
 class PersonController @Autowired constructor() {
+
+    @Autowired
+    private val personsService: PersonsService? = null;
 
     /*
         TODO PUT API to update/create someone's location using latitude and longitude
@@ -33,6 +38,10 @@ class PersonController @Autowired constructor() {
         // John has the list of people around them, now they need to retrieve everybody's names to display in the app
         // API would be called using person or persons ids
      */
+    @GetMapping("/persons")
+    fun persons(ids: Array<Int>): R<List<Person>> {
+        return R.ok(personsService!!.getByIds(ids))
+    }
 
     @GetMapping("")
     fun getExample(): String {

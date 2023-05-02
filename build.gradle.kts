@@ -22,6 +22,8 @@ dependencies {
 	implementation("com.h2database:h2:2.1.212")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	//use mybatis to manipulate db
+	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
 }
 
 tasks.withType<KotlinCompile> {
