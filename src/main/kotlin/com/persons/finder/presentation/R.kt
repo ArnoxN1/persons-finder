@@ -1,10 +1,13 @@
 package com.persons.finder.presentation
 
+/**
+ * common result return
+ */
 class R<T> {
     var code: String? = null
     var msg: String? = null
 
-    // only allows data to be modified by fun ok()
+    // use private set only allows data to be modified by fun ok()
     var data: T? = null
         private set
 
@@ -14,7 +17,10 @@ class R<T> {
         this.data = data;
     }
 
-    /* functions in companion object is like static methods in Java*/
+    /**
+     *  functions in companion object is like static methods in Java
+     *  public static <T> R<T> ok(T data)
+     *  */
     companion object {
         fun <T> ok(data: T): R<T> {
             return R("200", "Success", data);
@@ -24,7 +30,7 @@ class R<T> {
             return R("200", "Success", null);
         }
 
-        fun <T> fail(error: String): R<String> {
+        fun fail(error: String): R<String> {
             return R("500", "request failed", error);
         }
     }

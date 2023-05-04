@@ -1,6 +1,6 @@
 package com.persons.finder.data
 
 data class Person(
-    val id: Int,
-    val name: String
+    val id: Int? = null,
+    val name: String? = null
 )

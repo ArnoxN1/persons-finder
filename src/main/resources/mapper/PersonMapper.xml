@@ -4,10 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.persons.finder.mapper.PersonMapper">
 
+    <!-- select a person by id-->
     <select id="selectById" resultType="com.persons.finder.data.Person">
         select * from person where id = #{id}
     </select>
 
+    <!-- return list of people by searching ids-->
     <select id="selectByIds" resultType="com.persons.finder.data.Person">
         select * from person where id in
         <foreach collection="array" index="index" item="item" open="(" separator="," close=")">

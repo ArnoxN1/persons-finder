@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.persons.finder.mapper.LocationMapper">
+    <update id="update" parameterType="com.persons.finder.data.Location">
+        update location
+        <set>
+            <if test="latitude != null">
+                latitude = #{latitude},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude}
+            </if>
+        </set>
+        where reference_id = #{referenceId}
+    </update>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.persons.finder.data.Location">
+        insert into location(reference_id, latitude, longitude) values (#{referenceId}, #{latitude}, #{longitude})
+    </insert>
+
+    <select id="selectByReferenceId" parameterType="int" resultType="com.persons.finder.data.Location">
+        select * from location where reference_id=#{id}
+    </select>
+
+    <select id="getVicinity" resultType="com.persons.finder.data.Location">
+        select *
+        from location
+        where longitude &gt;= #{minlng}
+          and longitude &lt;= #{maxlng}
+          and latitude &gt;= #{minlat}
+          and latitude &lt;= #{maxlat}
+    </select>
+
+    <delete id="removeLocation" parameterType="int">
+        delete from location where reference_id=#{referenceId}
+    </delete>
+</mapper>
